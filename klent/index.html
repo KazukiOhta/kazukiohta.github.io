@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KLENT</title>
+    <meta name="author" content="Kazuki Ota" />
+    <meta
+      name="description"
+      content="Project page for Revisiting Regularized Policy Optimization for Stable and Efficient Reinforcement Learning in Two-Player Games."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Revisiting Regularized Policy Optimization for Stable and Efficient Reinforcement Learning in Two-Player Games"
+    />
+    <meta
+      property="og:description"
+      content="A project page for KLENT, a search-free self-play reinforcement learning method for two-player games."
+    />
+    <meta property="og:url" content="https://kazukiohta.github.io/klent/" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="KLENT: Stable and Efficient RL in Two-Player Games"
+    />
+    <meta
+      name="twitter:description"
+      content="A search-free self-play reinforcement learning method based on regularized policy optimization."
+    />
+    <link rel="stylesheet" href="../stylesheet.css" />
+    <link rel="stylesheet" href="./project.css" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]],
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <main class="page project-page">
+      <header class="project-header">
+        <p class="venue">ICML 2026</p>
+        <h1>
+          Revisiting Regularized Policy Optimization for Stable and Efficient
+          Reinforcement Learning in Two-Player Games
+        </h1>
+        <p class="authors">
+          <a href="../">Kazuki Ota</a><sup>1,2</sup>,
+          <a href="https://takaosa.github.io/about.html">Takayuki Osa</a><sup>2</sup>,
+          <a href="https://motokiomura.github.io/">Motoki Omura</a><sup>1</sup>,
+          <a href="https://www.mi.t.u-tokyo.ac.jp/harada/">Tatsuya Harada</a><sup>1,2</sup>
+        </p>
+        <p class="affiliations">
+          <sup>1</sup>The University of Tokyo &nbsp;/&nbsp;
+          <sup>2</sup>RIKEN AIP
+        </p>
+        <p class="link-row project-links" aria-label="Project links">
+          <a href="https://arxiv.org/abs/2602.10894">arXiv</a>
+          <span>/</span>
+          <a href="https://arxiv.org/pdf/2602.10894">PDF</a>
+          <span>/</span>
+          <a href="https://github.com/KazukiOhta/klent/tree/main">Code</a>
+          <span>/</span>
+          <a href="#bibtex">BibTeX</a>
+        </p>
+        <p class="topic-list project-tags" aria-label="Research topics">
+          <span>Reinforcement Learning</span>
+          <span>Self-Play</span>
+          <span>Two-Player Games</span>
+          <span>Regularized Policy Optimization</span>
+        </p>
+      </header>
+
+      <section aria-labelledby="lay-summary-heading">
+        <h2 id="lay-summary-heading">Lay Summary</h2>
+        <p>
+          Strong game-playing AI systems based on reinforcement learning, such
+          as AlphaZero, have achieved remarkable success by using look-ahead
+          search to choose better moves. While this approach has been highly
+          successful, it requires a large number of simulations during training,
+          making it computationally expensive. As a result, building or
+          reproducing strong game-playing AI has often been limited to
+          researchers with enormous computing resources.
+        </p>
+        <p>
+          In this work, we propose a method that learns good moves directly from
+          self-play, without using look-ahead search during training. By keeping
+          its strategy from changing too abruptly as self-play progresses, our
+          method stabilizes learning even without search. Experiments show that
+          it can reach comparable performance to existing search-based methods
+          using less computation.
+        </p>
+        <p>
+          Reducing the computation needed for training brings game-playing AI
+          closer to a technology that more researchers and practitioners can
+          use. From the standpoint of scientific reproducibility, lightweight
+          methods also make experiments easier to verify. Moreover, our approach
+          can serve as a promising baseline for applying reinforcement learning
+          to new environments and decision-making problems, providing a
+          foundation for further technical innovation.
+        </p>
+        <figure class="project-figure teaser">
+          <img
+            class="figure-image"
+            src="./assets/figure1.png"
+            alt="Conceptual comparison between search-based agents and KLENT"
+          />
+          <figcaption>
+            Conceptual overview. (a) Search-based agents rely on tree search
+            during training, while (b) KLENT learns action values directly and
+            trains without tree search.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="abstract-heading">
+        <h2 id="abstract-heading">Abstract</h2>
+        <p>
+          Two-player games such as board games have long been used as
+          traditional benchmarks for reinforcement learning. This work revisits
+          a policy optimization method with reverse Kullback-Leibler
+          regularization and entropy regularization and analyzes this
+          combination in two-player zero-sum settings from theoretical and
+          empirical perspectives. From a theoretical perspective, we investigate
+          the stability of the policy update rule in two theoretical settings:
+          game-theoretic normal-form games and finite-length games. We provide
+          novel convergence guarantees and verify our theoretical results
+          through numerical experiments on synthetic games. From an empirical
+          perspective, we derive a practical model-free reinforcement learning
+          algorithm based on the regularized policy optimization. We validate
+          the training efficiency of our algorithm through comprehensive
+          experiments on five board games: Animal Shogi, Gardner Chess, Go,
+          Hex, and Othello. Experimental results show that our agent learns more
+          efficiently than existing methods across environments.
+        </p>
+      </section>
+
+      <section aria-labelledby="approach-heading">
+        <h2 id="approach-heading">Our Approach</h2>
+        <p>
+          KLENT is a model-free self-play algorithm based on reverse-KL
+          regularization and entropy regularization. The reverse-KL term keeps
+          policy updates gradual as the opponent changes during self-play, while
+          the entropy term maintains exploration and helps avoid overfitting to
+          the agent's current behavior.
+        </p>
+        <p>
+          Given the current policy \(\pi\) and action-value estimate
+          \(Q^\pi(s,a)\), KLENT considers the following regularized policy
+          optimization problem:
+        </p>
+        <div class="equation-block" aria-label="Regularized policy optimization objective">
+          <div class="equation-desktop">
+            \[
+            \underset{\pi'}{\text{maximize}} \quad
+            \mathbb{E}_{A \sim \pi'(\cdot|s)}[Q^\pi(s,A)]
+            - \beta D_{\text{KL}}(\pi'(\cdot|s)\|\pi(\cdot|s))
+            + \alpha H(\pi'(\cdot|s)).
+            \]
+          </div>
+          <div class="equation-mobile">
+            \[
+            \begin{split}
+            \underset{\pi'}{\text{maximize}} \quad
+            & \mathbb{E}_{A \sim \pi'(\cdot|s)}[Q^\pi(s,A)] \\
+            & - \beta D_{\text{KL}}(\pi'(\cdot|s)\|\pi(\cdot|s)) \\
+            & + \alpha H(\pi'(\cdot|s)).
+            \end{split}
+            \]
+          </div>
+        </div>
+        <p>
+          Because the action space is finite, this objective has the following
+          closed-form solution:
+        </p>
+        <div class="equation-block" aria-label="Closed-form policy update">
+          \[
+          \pi'(a|s) =
+          \frac{1}{Z(s)}
+          \exp\left(
+          \frac{Q^\pi(s,a)+\beta \log \pi(a|s)}{\alpha+\beta}
+          \right).
+          \]
+        </div>
+        <p>
+          KLENT uses this analytical target for action selection and policy
+          fitting, while directly learning action values instead of estimating
+          them through Monte Carlo Tree Search.
+        </p>
+      </section>
+
+      <section aria-labelledby="theory-heading">
+        <h2 id="theory-heading">Theoretical Results</h2>
+        <figure class="project-figure">
+          <img
+            class="figure-image"
+            src="./assets/figure3.png"
+            alt="Theoretical and experimental convergence results in normal-form games"
+          />
+          <figcaption>
+            Stability analysis in a simple two-player game. The left panels
+            show where regularized updates are predicted and observed to
+            converge, and the right panels show example policy trajectories
+            inside and outside that stable region.
+          </figcaption>
+        </figure>
+        <p>
+          We analyze the stability of the policy update in two-player zero-sum
+          games. In normal-form games, the update is locally linearly convergent
+          to the unique fixed point under the condition
+          \(\alpha(\alpha + 2\beta) > \|R\|_2^2 / 4\), which gives a broader
+          convergence region than a previous sufficient condition.
+        </p>
+        <p>
+          We also study finite-length games, including sequential board games,
+          and prove convergence to an entropy-regularized optimal policy. The
+          proof propagates stability backward from terminal states, matching the
+          way values are learned earlier near the end of a game.
+        </p>
+      </section>
+
+      <section aria-labelledby="experiments-heading">
+        <h2 id="experiments-heading">Experimental Results</h2>
+        <figure class="project-figure">
+          <img
+            class="figure-image"
+            src="./assets/figure6.png"
+            alt="Performance comparison across five board games"
+          />
+          <figcaption>
+            Performance comparison between our agent KLENT and existing methods
+            on five board games. KLENT achieves competitive or higher
+            efficiency compared to existing methods.
+          </figcaption>
+        </figure>
+        <p>
+          We compare KLENT with AlphaZero, TRPO AlphaZero, Gumbel AlphaZero,
+          DQN, and PPO on five board games. KLENT uses the same hyperparameters
+          across environments and trains without look-ahead search.
+        </p>
+        <p>
+          Across these games, KLENT achieves competitive or higher training
+          efficiency compared to existing methods. The advantage is especially
+          visible in games with larger branching factors, where avoiding
+          look-ahead search reduces the simulator-evaluation burden during
+          training.
+        </p>
+      </section>
+
+      <section aria-labelledby="conclusion-heading">
+        <h2 id="conclusion-heading">Conclusions &amp; Further Results</h2>
+        <p>
+          KLENT shows that stable self-play in board games is possible without
+          search during training when policy updates are regularized carefully.
+          The results suggest that revisiting simple regularization principles
+          can reduce the computational cost of training strong game-playing
+          agents.
+        </p>
+        <p>
+          The full paper contains the detailed algorithm, proofs, ablation
+          studies, sensitivity analyses, test-time computation experiments, and
+          additional results on full-size 19x19 Go.
+        </p>
+      </section>
+
+      <section aria-labelledby="bibtex-heading" id="bibtex">
+        <h2 id="bibtex-heading">BibTeX</h2>
+        <pre class="bibtex"><code>@inproceedings{ota2026revisiting,
+  title = {Revisiting Regularized Policy Optimization for Stable and Efficient Reinforcement Learning in Two-Player Games},
+  author = {Ota, Kazuki and Osa, Takayuki and Omura, Motoki and Harada, Tatsuya},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year = {2026}
+}</code></pre>
+      </section>
+
+    </main>
+  </body>
+</html>
