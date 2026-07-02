@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kazuki Ota @ ICML 2026</title>
+    <meta name="author" content="Kazuki Ota" />
+    <meta
+      name="description"
+      content="Kazuki Ota's ICML 2026 page for reinforcement learning, self-play, and AI for mathematics."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kazuki Ota @ ICML 2026" />
+    <meta
+      property="og:description"
+      content="A compact page for meeting Kazuki Ota around ICML 2026."
+    />
+    <meta property="og:url" content="https://kazukiohta.github.io/icml2026/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Kazuki Ota @ ICML 2026" />
+    <meta
+      name="twitter:description"
+      content="Reinforcement learning, self-play, and AI for mathematics."
+    />
+    <link rel="stylesheet" href="../stylesheet.css" />
+    <link rel="stylesheet" href="./icml2026.css" />
+  </head>
+  <body>
+    <main class="page icml-page">
+      <header class="conference-hero">
+        <div class="conference-hero-grid">
+          <div class="conference-title">
+            <h1>Kazuki Ota @ ICML 2026</h1>
+          </div>
+          <a class="conference-portrait-link" href="../assets/images/profile.JPG">
+            <img
+              class="conference-portrait"
+              src="../assets/images/profile.JPG"
+              alt="Portrait of Kazuki Ota"
+            />
+          </a>
+          <div class="conference-description">
+            <p class="conference-lede">
+              I am a Ph.D. student at The University of Tokyo and a part-time
+              researcher at RIKEN AIP. At ICML 2026, I will present two
+              papers: one at the main conference on stable and efficient
+              <a href="#klent-paper">self-play reinforcement learning</a>
+              for two-player games, and one at the AI for Math Workshop on
+              <a href="#theorem-discovery-paper">self-supervised theorem discovery</a>
+              from axioms alone. For more about me, please visit
+              <a href="../">my homepage</a>.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <section aria-labelledby="papers-heading">
+        <h2 id="papers-heading">ICML 2026 Papers</h2>
+        <div class="conference-paper-list">
+          <article class="conference-paper" id="klent-paper">
+            <div class="paper-heading">
+              <p class="paper-title">
+                <a href="../klent/">
+                  Revisiting Regularized Policy Optimization for Stable and
+                  Efficient Reinforcement Learning in Two-Player Games
+                </a>
+              </p>
+              <div class="session-info">
+                <p>ICML 2026 Main Conference Paper, Poster Session 4</p>
+                <p>Jul 8 (Wed), 2:30 PM-4:15 PM (KST), Hall A #306</p>
+              </div>
+            </div>
+            <figure class="paper-visual">
+              <img
+                src="./assets/klent-average-performance.png"
+                alt="Average performance comparison across environments for KLENT"
+              />
+            </figure>
+            <div class="paper-body">
+              <p>
+                We revisit regularized policy optimization for two-player
+                games and develop KLENT, a search-free self-play reinforcement
+                learning method that improves training stability and efficiency.
+              </p>
+              <p class="paper-links">
+                <a href="../klent/">project page</a>
+                <span>|</span>
+                <a href="https://arxiv.org/abs/2602.10894">paper</a>
+                <span>|</span>
+                <a href="icml:///event/61227">Open in ICML App</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="conference-paper" id="theorem-discovery-paper">
+            <div class="paper-heading">
+              <p class="paper-title">
+                <a href="https://arxiv.org/abs/2606.28747">
+                  Self-Supervised Theorem Discovery in a Formal Axiomatic System
+                </a>
+              </p>
+              <div class="session-info">
+                <p>3rd AI for Math Workshop</p>
+                <p>Jul 11 (Sat), 10:55 AM-12:10 PM (KST), Hall D1</p>
+              </div>
+            </div>
+            <figure class="paper-visual">
+              <img
+                src="./assets/theorem-discovery-success-rate-gpt.png"
+                alt="Proof success rate comparison between language models and our method"
+              />
+            </figure>
+            <div class="paper-body">
+              <p>
+                We study whether useful mathematical knowledge can emerge from
+                axioms alone by training an agent to discover formal theorems
+                and reuse them as lemmas for future reasoning.
+              </p>
+              <p class="paper-links">
+                <a href="https://arxiv.org/abs/2606.28747">paper</a>
+                <span>|</span>
+                <a href="icml:///event/82629">Open in ICML App</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="topics-heading">
+        <h2 id="topics-heading">Conversation Topics</h2>
+        <p>
+          I am especially interested in discussing how learning systems can
+          search for, test, and organize new knowledge beyond direct human
+          supervision.
+        </p>
+        <p class="topic-list conversation-tags">
+          <span>Reinforcement Learning</span>
+          <span>Self-Play</span>
+          <span>Search and Planning</span>
+          <span>Monte Carlo Tree Search</span>
+          <span>Theorem Discovery</span>
+          <span>Formal Proofs</span>
+          <span>AI for Mathematics</span>
+        </p>
+      </section>
+
+      <section aria-labelledby="meet-heading" class="meeting-section">
+        <h2 id="meet-heading">Meet</h2>
+        <p>
+          If you would like to chat during ICML 2026, please
+          <a href="mailto:ota@mi.t.u-tokyo.ac.jp">email me</a>. I am happy to
+          talk about the papers above, related research ideas, or possible
+          collaborations.
+        </p>
+      </section>
+
+      <footer>
+        <p>
+          If you notice any errors, please
+          <a href="mailto:ota@mi.t.u-tokyo.ac.jp">email me</a>.
+        </p>
+        <p>Back to <a href="../">Kazuki Ota's homepage</a>.</p>
+      </footer>
+    </main>
+  </body>
+</html>

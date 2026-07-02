@@ -1,0 +1,186 @@
+.icml-page {
+  padding-top: 30px;
+}
+
+.conference-hero {
+  position: relative;
+  margin-bottom: 1.8rem;
+  padding: 0 0 0.6rem;
+}
+
+.conference-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 176px;
+  column-gap: 34px;
+  row-gap: 0.7rem;
+  align-items: center;
+}
+
+.conference-title,
+.conference-description {
+  grid-column: 1;
+  min-width: 0;
+}
+
+.conference-hero h1 {
+  margin-bottom: 0.9rem;
+  text-align: left;
+  font-size: 34px;
+}
+
+.venue {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.conference-lede {
+  font-size: 15px;
+}
+
+.conference-portrait-link {
+  display: flex;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-content: center;
+}
+
+.conference-portrait {
+  display: block;
+  width: 172px;
+  height: 172px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.conference-paper {
+  display: grid;
+  grid-template-columns: 178px minmax(0, 1fr);
+  grid-template-areas:
+    "visual heading"
+    "visual body";
+  column-gap: 20px;
+  row-gap: 0.25rem;
+  padding: 1.2rem 0;
+}
+
+.conference-paper p {
+  margin-bottom: 0.2rem;
+}
+
+.conference-paper .venue {
+  margin-bottom: 0.25rem;
+}
+
+.session-info {
+  margin: 0.2rem 0 0.45rem;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.session-info p {
+  margin-bottom: 0.05rem;
+}
+
+.paper-visual {
+  align-self: start;
+  grid-area: visual;
+  margin: 0;
+}
+
+.paper-visual img {
+  display: block;
+  width: 100%;
+  height: 118px;
+  background: #ffffff;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.paper-heading {
+  grid-area: heading;
+  min-width: 0;
+}
+
+.paper-body {
+  grid-area: body;
+  min-width: 0;
+}
+
+.conversation-tags {
+  margin-top: 0.75rem;
+}
+
+.meeting-section {
+  margin-top: 1.9rem;
+}
+
+.icml-page footer span {
+  color: var(--muted);
+  margin: 0 0.35rem;
+}
+
+@media (max-width: 680px) {
+  .icml-page {
+    padding-top: 24px;
+  }
+
+  .conference-hero-grid,
+  .conference-paper {
+    grid-template-columns: 1fr;
+  }
+
+  .conference-paper {
+    grid-template-areas:
+      "heading"
+      "visual"
+      "body";
+    row-gap: 0.9rem;
+  }
+
+  .conference-hero-grid {
+    gap: 18px;
+  }
+
+  .conference-title,
+  .conference-description,
+  .conference-portrait-link {
+    grid-column: 1;
+  }
+
+  .conference-title {
+    order: 1;
+  }
+
+  .conference-portrait-link {
+    grid-row: auto;
+    order: 2;
+    justify-content: flex-start;
+  }
+
+  .conference-description {
+    order: 3;
+  }
+
+  .conference-portrait {
+    width: 142px;
+    height: 142px;
+  }
+
+  .conference-hero h1 {
+    font-size: 28px;
+  }
+
+  .paper-visual img {
+    height: auto;
+    max-height: 220px;
+  }
+
+  .paper-visual,
+  .paper-heading,
+  .paper-body {
+    grid-column: 1;
+  }
+}
